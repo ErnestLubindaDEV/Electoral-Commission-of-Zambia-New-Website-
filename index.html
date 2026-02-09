@@ -93,6 +93,140 @@
     opacity: 0.85;
 }
 
+  .tp-countdown-modern{
+    background: linear-gradient(180deg, rgba(13,145,83,.06) 0%, rgba(241,113,33,.06) 55%, rgba(236,28,36,.05) 100%);
+  }
+
+  .tp-countdown-card{
+    background:#fff;
+    padding: 22px 22px 18px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.10);
+    border: 1px solid rgba(0,0,0,.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* subtle accent stripe */
+  .tp-countdown-card:before{
+    content:"";
+    position:absolute;
+    inset: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #f17121 0%, #0d9153 35%, #ec1c24 70%, #000 100%);
+  }
+
+  .tp-countdown-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+    padding-top: 8px;
+    margin-bottom: 16px;
+  }
+
+  .tp-countdown-badge{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color:#111;
+    background: rgba(0,0,0,.05);
+  }
+
+  .tp-countdown-meta{
+    font-size: 12px;
+    color: rgba(0,0,0,.55);
+    white-space: nowrap;
+  }
+
+  .tp-countdown-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .tp-timebox{
+    border-radius: 14px;
+    padding: 12px 12px 14px;
+    color:#fff;
+    position: relative;
+    overflow:hidden;
+    transform: translateZ(0);
+    box-shadow: 0 12px 22px rgba(0,0,0,.12);
+  }
+
+  /* glass highlight */
+  .tp-timebox:before{
+    content:"";
+    position:absolute;
+    top:-40%;
+    left:-30%;
+    width: 140%;
+    height: 120%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.30) 0%, rgba(255,255,255,0) 55%);
+    pointer-events:none;
+  }
+
+  .tp-timebox-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom: 10px;
+  }
+
+  .tp-dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background: rgba(255,255,255,.9);
+    box-shadow: 0 0 0 4px rgba(255,255,255,.18);
+  }
+
+  .tp-label{
+    font-size: 12px;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    opacity: .92;
+    font-weight: 600;
+  }
+
+  .tp-timebox-num{
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  /* REQUIRED COLORS */
+  .tp-timebox.is-days{
+    background: linear-gradient(135deg, #f17121 0%, #d95e17 100%);
+  }
+  .tp-timebox.is-hours{
+    background: linear-gradient(135deg, #0d9153 0%, #0a7543 100%);
+  }
+  .tp-timebox.is-minutes{
+    background: linear-gradient(135deg, #ec1c24 0%, #c5141a 100%);
+  }
+  .tp-timebox.is-seconds{
+    background: linear-gradient(135deg, #000 0%, #2b2b2b 100%);
+  }
+
+  .tp-countdown-foot{
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(0,0,0,.12);
+    text-align: center;
+  }
+
+  /* responsive */
+  @media (max-width: 575px){
+    .tp-countdown-grid{ grid-template-columns: repeat(2, 1fr); }
+    .tp-timebox-num{ font-size: 32px; }
+  }
+  }
+
+
 </style>
    </head>
 
@@ -920,8 +1054,8 @@
 </div>
           <hr>  
 
-         <!-- tp-faq-area-start -->
-     <div class="tp-faq-area pt-140 pb-110">
+       
+  <div class="tp-faq-area pt-140 pb-110">
     <div class="container">
         <div class="row">
 
@@ -1014,7 +1148,79 @@
     </div>
 </div>
 
-       
+
+<section class="tp-countdown-area pt-90 pb-90 tp-countdown-modern">
+   
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 mb-30">
+        <div class="tp-countdown-content">
+          <span class="fw-500 fs-16 tp-text-grey-1 mb-10 d-inline-block">Our Next Election Date</span>
+          <h1 class="mb-15 fs-40 fs-sm-32">
+            Countdown to <span class="text-italic fw-400 tp-ff-heading">Election Day</span>
+          </h1>
+          <p class="tp-text-grey-2 mb-0">
+            This timer updates every second and helps voters track the next key milestone.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-5 mb-30">
+        <div class="tp-countdown-card tp-round-4">
+          <div class="tp-countdown-head">
+            <div class="tp-countdown-badge">2026 Zambian general election
+</div>
+            <div class="tp-countdown-meta">
+              Target: <span id="countdownTargetLabel">2026-08-13 00:00</span>
+            </div>
+          </div>
+
+          <div class="tp-countdown-grid" id="electionCountdown">
+            <!-- Days -->
+            <div class="tp-timebox is-days">
+              <div class="tp-timebox-top">
+                <span class="tp-dot"></span>
+                <span class="tp-label">Days</span>
+              </div>
+              <div class="tp-timebox-num" data-days>00</div>
+            </div>
+
+            <!-- Hours -->
+            <div class="tp-timebox is-hours">
+              <div class="tp-timebox-top">
+                <span class="tp-dot"></span>
+                <span class="tp-label">Hours</span>
+              </div>
+              <div class="tp-timebox-num" data-hours>00</div>
+            </div>
+
+            <!-- Minutes -->
+            <div class="tp-timebox is-minutes">
+              <div class="tp-timebox-top">
+                <span class="tp-dot"></span>
+                <span class="tp-label">Minutes</span>
+              </div>
+              <div class="tp-timebox-num" data-minutes>00</div>
+            </div>
+
+            <!-- Seconds -->
+            <div class="tp-timebox is-seconds">
+              <div class="tp-timebox-top">
+                <span class="tp-dot"></span>
+                <span class="tp-label">Seconds</span>
+              </div>
+              <div class="tp-timebox-num" data-seconds>00</div>
+            </div>
+          </div>
+
+          <div class="tp-countdown-foot">
+            <small class="tp-text-grey-2" id="countdownStatus"></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
          <!-- tp-blog-area-start -->
         <div class="tp-blog-area tp-blog-4-spacing pb-140 tp-round-4 tp-bg-grey-3 pt-135">
@@ -1343,6 +1549,62 @@
       <script src="assets/js/parallax-scrool.js"></script>
       <script src="assets/js/slider-init.js"></script>
       <script src="assets/js/main.js"></script>
+  <script>
+  (function () {
+    // ✅ Change the date to your real election date/time
+    const TARGET = "2026-08-13T00:00:00"; // local time
+
+    const root = document.getElementById("electionCountdown");
+    if (!root) return;
+
+    const elDays = root.querySelector("[data-days]");
+    const elHours = root.querySelector("[data-hours]");
+    const elMinutes = root.querySelector("[data-minutes]");
+    const elSeconds = root.querySelector("[data-seconds]");
+
+    const label = document.getElementById("countdownTargetLabel");
+    const status = document.getElementById("countdownStatus");
+
+    const targetDate = new Date(TARGET);
+
+    const pad2 = (n) => String(n).padStart(2, "0");
+    const pad = (n) => String(n).padStart(2, "0");
+
+    if (label) {
+      label.textContent = `${targetDate.getFullYear()}-${pad(targetDate.getMonth() + 1)}-${pad(targetDate.getDate())} ${pad(targetDate.getHours())}:${pad(targetDate.getMinutes())}`;
+    }
+
+    function tick() {
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        elDays.textContent = "00";
+        elHours.textContent = "00";
+        elMinutes.textContent = "00";
+        elSeconds.textContent = "00";
+        if (status) status.textContent = "The countdown has ended.";
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      elDays.textContent = pad2(days);
+      elHours.textContent = pad2(hours);
+      elMinutes.textContent = pad2(minutes);
+      elSeconds.textContent = pad2(seconds);
+
+      if (status) status.textContent = "";
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+</script>
    </body>
 
 </html>
