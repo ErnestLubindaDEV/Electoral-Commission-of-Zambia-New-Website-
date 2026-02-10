@@ -122,13 +122,13 @@ li,
   --tp-common-white: #fff;
   --tp-common-black: #000;
   --tp-common-white-2: #f6f6f6;
-  --tp-common-yellow: #f17121;
+  --tp-common-yellow: #DB5012;
   --tp-grey-1: #000000;
   --tp-grey-2: #000000;
   --tp-grey-3: #e5ebea;
   --tp-grey-4: #f3f4f4;
   --tp-theme-primary: #000000;
-  --tp-theme-secondary: #f17121;
+  --tp-theme-secondary: #DB5012;
   --tp-border-1: rgba(31, 49, 48, 0.1);
   --tp-border-2: rgba(31, 49, 48, 0.12);
   --tp-border-3: rgba(255, 255, 255, 0.55);
@@ -3683,33 +3683,32 @@ input[type=color] {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--tp-theme-primary);
+  background: white;
 }
 
 /* HTML: <div class="loader"></div> */
 .loading {
   width: 60px;
   aspect-ratio: 2;
-  --_g: no-repeat radial-gradient(circle closest-side,#f8d0b3 90%,#0000);
-  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
-  background-size: 33.3333333333% 50%;
-  animation: l3 1s infinite linear;
+  background-color: #ffffff;
+
+  background:
+    no-repeat radial-gradient(circle closest-side, #0c9154 90%, transparent) 0% 50%,
+    no-repeat radial-gradient(circle closest-side, #ed1c24 90%, transparent) 50% 50%,
+    no-repeat radial-gradient(circle closest-side, #f37221 90%, transparent) 100% 50%;
+
+  background-size: 33.333% 50%;
+  animation: dots 1s infinite linear;
 }
 
-@keyframes l3 {
-  20% {
-    background-position: 0% 0%, 50% 50%, 100% 50%;
-  }
-  40% {
-    background-position: 0% 100%, 50% 0%, 100% 50%;
-  }
-  60% {
-    background-position: 0% 50%, 50% 100%, 100% 0%;
-  }
-  80% {
-    background-position: 0% 50%, 50% 50%, 100% 100%;
-  }
+/* Animation */
+@keyframes dots {
+  0%   { background-position: 0% 50%, 50% 50%, 100% 50%; }
+  33%  { background-position: 50% 50%, 100% 50%, 0% 50%; }
+  66%  { background-position: 100% 50%, 0% 50%, 50% 50%; }
+  100% { background-position: 0% 50%, 50% 50%, 100% 50%; }
 }
+
 /*----------------------------------------*/
 /*  2.6 Nice Select
 /*----------------------------------------*/
