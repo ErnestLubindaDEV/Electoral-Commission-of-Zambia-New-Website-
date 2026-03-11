@@ -219,7 +219,7 @@ img {
 
 a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color: inherit;url(../../../../Downloads/ecz gradient.png)
   text-decoration: none;
 }
 
@@ -227,6 +227,23 @@ a:focus,
 .button:focus {
   text-decoration: none;
   outline: none;
+}
+
+.counter-bg{
+  background-image: url('../img/ecz_gradient.png');
+
+}
+
+.counter-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+
+.counter-bg > .container{
+  position: relative;
+  z-index: 1;
 }
 
 a:focus,
@@ -4686,7 +4703,7 @@ input[type=color] {
 .tp-header-2-right .tp-main-menu > nav > ul > li > a {
   border: 1px solid rgba(31, 49, 48, 0.15);
   border-radius: 30px;
-  padding: 9px 20px;
+  padding: 9px 10px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .tp-header-2-right .tp-main-menu > nav > ul > li > a {

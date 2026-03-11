@@ -92,7 +92,167 @@
     opacity: 0.85;
 }
 
+
+  :root{
+    --ecz-green:#0c9154;
+    --ecz-orange:#f37221;
+    --ecz-red:#ed1c24;
+    --ecz-dark:#111111;
+    --ecz-muted:#6b7280;
+    --ecz-border:#e9ecef;
+    --ecz-bg:#ffffff;
+  }
+
+  .ecz-mc-section{ background: var(--ecz-bg); }
+  .ecz-kicker{
+    display:inline-block;
+    font-weight:600;
+    letter-spacing:.02em;
+    color: var(--ecz-green);
+    background: rgba(12,145,84,.08);
+    padding:.35rem .65rem;
+    border-radius: 999px;
+    margin-bottom:.75rem;
+  }
+  .ecz-title{
+    color: var(--ecz-dark);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .ecz-lead{
+    color: var(--ecz-muted);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .ecz-card{
+    border: 1px solid var(--ecz-border);
+    border-radius: 18px;
+    background:#fff;
+    box-shadow: 0 10px 30px rgba(17,17,17,.05);
+    padding: 22px;
+  }
+  .ecz-card--mandate{ border-top: 6px solid var(--ecz-green); }
+  .ecz-card--composition{ border-top: 6px solid var(--ecz-orange); }
+
+  .ecz-card-head{
+    display:flex;
+    gap:14px;
+    align-items:center;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(0,0,0,.08);
+  }
+  .ecz-badge{
+    width: 44px;
+    height: 44px;
+    display:grid;
+    place-items:center;
+    border-radius: 14px;
+    color:#fff;
+    flex: 0 0 auto;
+    font-size: 20px;
+  }
+  .ecz-badge--mandate{ background: linear-gradient(135deg, var(--ecz-green), #0aa35e); }
+  .ecz-badge--composition{ background: linear-gradient(135deg, var(--ecz-orange), #ff8a3d); }
+
+  .ecz-card-title{
+    font-weight: 800;
+    color: var(--ecz-dark);
+    margin:0;
+  }
+  .ecz-card-sub{
+    color: var(--ecz-muted);
+    font-size: .95rem;
+  }
+
+  .ecz-block{
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .ecz-block:last-child{ border-bottom: none; padding-bottom: 0; }
+
+  .ecz-block-title{
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ecz-dark);
+    margin-bottom: .55rem;
+  }
+  .ecz-text{
+    color: #374151;
+    line-height: 1.75;
+    margin-bottom: .75rem;
+  }
+
+  /* Ordered list styling to match the design */
+  .ecz-ol{
+    margin: 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 10px;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .ecz-ol li{
+    padding-left: .25rem;
+  }
+
+  .ecz-chips{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .ecz-chip{
+    display:inline-flex;
+    padding: .45rem .7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(12,145,84,.25);
+    background: rgba(12,145,84,.06);
+    color: var(--ecz-dark);
+    font-weight: 600;
+    font-size: .88rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* People (Commission / Management) */
+  .ecz-people-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  @media (min-width: 576px){
+    .ecz-people-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  .ecz-person-card{
+    display:flex;
+    gap: 12px;
+    align-items:center;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 14px;
+    padding: 12px;
+    background: #fff;
+  }
+  .ecz-avatar{
+    width: 46px;
+    height: 46px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(12,145,84,.18), rgba(243,114,33,.18));
+    border: 1px dashed rgba(0,0,0,.12);
+    flex: 0 0 auto;
+  }
+  .ecz-person-name{
+    font-weight: 800;
+    color: var(--ecz-dark);
+    line-height: 1.2;
+  }
+  .ecz-person-role{
+    color: var(--ecz-muted);
+    font-size: .92rem;
+    margin-top: 2px;
+  }
 </style>
+
    </head>
 
    <body class="tp-bg-common-white-2">
@@ -483,233 +643,186 @@
                <div class="row">
                   <div class="col-xl-5 col-lg-6 col-md-9">
                      <div class="tp-breadcrumb-content mr-80">
-                        <h2 class="tp-breadcrumb-title fw-600 fs-60 fs-xs-40 ls-m-3 tp-text-common-white lh-1">About us</h2>
-                        <div class="tp-breadcrumb-dvdr">
-                           <ul>
-                              <li><a href="index.html">Main Home</a></li>
-                              <li class="dvdr">/</li>
-                              <li>About us</li>
-                           </ul>
-                        </div>
+                        <h2 class="tp-breadcrumb-title fw-600 fs-60 fs-xs-40 ls-m-3 tp-text-common-white lh-1">Mandate & Composition</h2>
+                       
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         <!-- tp-breadcrumb-area-end -->
+         <!-- tp-breadcrumb-area-end --
 
-         <!-- tp-feature-area-start -->
-    <div class="tp-feature-area tp-feature-4-wrap pt-100 fix" id="vision-mission-values">
-  <div class="container-fluid container-1690">
-    <div class="tp-border-bottom">
-      <div class="row gx-90">
-
-        <!-- VISION -->
-        <div class="col-lg-4 col-md-6 col-sm-6 tp-counter-3-border">
-          <div class="tp-feature-3-wrap tpshake-wrap md-space d-flex">
-            <span class="mr-30" style="font-size: 40px; color: #fff; background-color: #22382e;">
-              <!-- Remix Icon -->
-              <i class="ri-eye-line" style="font-size: 40px; color: #fff;"></i>
-            </span>
-            <div>
-              <h3 class="fs-24 fw-500 mb-15">Our Vision</h3>
-              <p>
-A Model Electoral Management Body that meets the democratic aspiration of the Zambian people.              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- MISSION -->
-        <div class="col-lg-4 col-md-6 col-sm-6 tp-counter-3-border">
-          <div class="tp-feature-3-wrap tpshake-wrap d-flex md-space pl-15">
-            <span class="mr-30" style="font-size: 40px; color: #fff; background-color: #22382e;">
-              <!-- Remix Icon -->
-              <i class="ri-flag-2-line" style="font-size: 40px; color: #fff;"></i>
-            </span>
-            <div>
-              <h3 class="fs-24 fw-500 mb-15">Our Mission</h3>
-              <p>
-               To effectively manage the electoral process to deliver credible elections.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- CORE VALUES -->
-        <div class="col-lg-4 col-md-6 col-sm-6">
-          <div class="tp-feature-3-wrap tpshake-wrap d-flex pl-15">
-            <span class="mr-30" style="font-size: 40px; color: #fff; background-color: #22382e;">
-              <!-- Remix Icon -->
-              <i class="ri-shield-check-line" style="font-size: 40px; color: #fff;"></i>
-            </span>
-            <div>
-              <h3 class="fs-24 fw-500 mb-15">Our Core Values</h3>
-              <p class="mb-0">
-                Integrity, impartiality, professionalism, transparency, accountability, and public trust.
-              </p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-         <!-- tp-feature-area-end -->
-
-
-
-
-<div class="tp-about-area pt-140 pb-110" id="about">
-  <div class="container-fluid container-1690 p-relative">
-
-    <!-- decorative icon -->
-    <span class="tp-about-4-icon p-absolute mb-30 d-none d-lg-block">
-      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 100H180V180H100V100Z" fill="white" />
-        <path d="M40 40H96C98.2091 40 100 41.7909 100 44V100H44C41.7909 100 40 98.2091 40 96V40Z" fill="white" />
-        <path d="M0 0H36C38.2091 0 40 1.79086 40 4V40H4C1.79086 40 0 38.2091 0 36V0Z" fill="white" />
-      </svg>
-    </span>
-
-    <div class="row align-items-center">
-
-      <!-- STATS -->
-      <div class="col-lg-3 col-md-5 mb-30">
-        <div class="tp-about-4-count mr-110">
-
-          <!-- Stat 1 -->
-          <div class="tp-about-4-count-item mb-50 pb-25 tp-border-bottom d-block">
-            <span class="d-inline-block mb-15 wow zoomIn" data-wow-duration="1.5s" data-wow-delay="0.2s">
-              <i class="ri-shield-check-line" style="font-size:40px;color:#1F3130;"></i>
-            </span>
-
-            <!-- IMPORTANT: set the number you want here -->
-            <h2 class="fs-80 ls-m-3 mb-0">
-              <span data-purecounter-duration="1" data-purecounter-end="60" class="purecounter">0</span>+
-            </h2>
-            <p class="fw-500">
-              Years of administering elections and supporting democratic governance.
-            </p>
-          </div>
-
-          <!-- Stat 2 -->
-          <div class="tp-about-4-count-item d-block">
-            <span class="d-inline-block mb-15">
-              <i class="ri-map-pin-2-line" style="font-size:40px;color:#1F3130;"></i>
-            </span>
-
-            <!-- IMPORTANT: set the number you want here -->
-            <h2 class="fs-80 ls-m-3 mb-0">
-              <span data-purecounter-duration="1" data-purecounter-end="116" class="purecounter">0</span>+
-            </h2>
-            <p class="fw-500">
-              Districts served nationwide through voter services and electoral operations.
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- IMAGE -->
-      <div class="col-lg-4 col-md-7 mb-30">
-        <div class="tp-about-4-thumb mr-70 wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s">
-          <!-- Replace with ECZ-related image -->
-          <img class="w-100" src="assets/img/about/four/thumb.jpg" alt="Electoral Commission of Zambia">
-        </div>
-      </div>
-
-      <!-- CONTENT -->
-      <div class="col-lg-5 mb-30">
-        <div class="tp-about-2-content tp-about-4-content">
-
-          <span class="fw-500 fs-16 tp-text-grey-1 mb-5 d-inline-block">
-            About the Commission
-          </span>
-
-          <h2 class="mb-20 fs-xl-40 fs-sm-36 wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.2s">
-            Delivering <span class="text-italic fw-400 tp-ff-heading">credible, transparent and inclusive</span> elections.
-          </h2>
-
-          <p class="mb-30">
-The Electoral Commission of Zambuia is mandated to manage and oversee elections and referendum processes in accordance with the constitution and electoral laws in the country. It works to strengthen democracy through fair, impartial and efficient electoral administration.
-The commission ensures that every eligible citizen has the opportunity to participate in the democratic process.
-It does so through voter registration and education, election management, stakeholder engagements and dispute resolution.
-          </p>
-
-          <div class="tp-about-bottom-feature mb-40">
-            <ul>
-              <li><i class="fa-sharp fa-solid fa-check"></i> Voter services and civic information</li>
-              <li><i class="fa-sharp fa-solid fa-check"></i> Polling operations and results management</li>
-              <li><i class="fa-sharp fa-solid fa-check"></i> Stakeholder engagement and electoral transparency</li>
-            </ul>
-          </div>
-
-          <a href="#services"
-             class="tp-btn-xl d-inline-block lh-0 tp-round-26 fs-16 tp-bg-theme-primary ls-0 tp-btn-switch-animation tp-text-common-white hover-text-white fw-500">
-            <span class="d-flex align-items-center justify-content-center">
-              <span class="btn-text">Learn more about ECZ</span>
-              <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
-              <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
-            </span>
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-         <!-- tp-about-area-end -->
-
-      
-
-
-        
-
-         <!-- tp-brands-area-start -->
-      <!-- Affiliations Section -->
-<div class="tp-brands-area pt-100 pb-100" id="affiliations">
+  <section id="mandate-composition" class="ecz-mc-section py-5">
   <div class="container">
 
-    <!-- Heading -->
-    <div class="row justify-content-center mb-50">
-      <div class="col-lg-8 text-center">
-      
-        <h2 class="mb-20 fs-xl-40 fs-sm-36">
-        Affiliations
-
-        </h2>
-
-        <p class="mb-0">
-       The Electoral Commission of Zambia networks with other Electoral Management Bodies in the SADC region and beyond.  This is achieved through membership to regional electoral management bodies and study visits aimed at sharing and exchanging electoral best practices.
-The Commission is a member of the Electoral Commissions' Forum (ECF) of SADC countries, an umbrella association that brings together all the electoral management bodies in the SDAC region.  
+    <!-- Section Heading -->
+    <div class="row justify-content-center text-center mb-4">
+      <div class="col-lg-9">
+         <br>
+        <span class="ecz-kicker">Establishement</span>
+        <h2 class="ecz-title mb-2">Mandate &amp; Composition</h2>
+        <p class="ecz-lead mb-0">
+          The Electoral Commission of Zambia (ECZ) is established by law to deliver credible, transparent and inclusive
+          electoral processes.
         </p>
       </div>
     </div>
 
-    <!-- Logos -->
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="tp-brands-wrap">
-          <ul>
-            <li><a href="#"><img src="assets/img/brand/brands.png" alt="Partner Logo"></a></li>
-            <li><a href="#"><img src="assets/img/brand/brands-2.png" alt="Partner Logo"></a></li>
-            <li><a href="#"><img src="assets/img/brand/brands-3.png" alt="Partner Logo"></a></li>
-            <li><a href="#"><img src="assets/img/brand/brands-4.png" alt="Partner Logo"></a></li>
-            <li><a href="#"><img src="assets/img/brand/brands-5.png" alt="Partner Logo"></a></li>
-          </ul>
+    <!-- TWO GROUPS -->
+    <div class="row g-4">
+
+      <!-- =========================
+      GROUP 1: MANDATE
+      ========================== -->
+      <div class="col-lg-6">
+        <div class="ecz-card ecz-card--mandate h-100">
+          <div class="ecz-card-head">
+            <div class="ecz-badge ecz-badge--mandate">
+              <i class="ri-scales-3-line"></i>
+            </div>
+            <div>
+              <h3 class="ecz-card-title mb-1">Mandate</h3>
+              <p class="ecz-card-sub mb-0">Legal basis, constitutional functions and statutory functions.</p>
+            </div>
+          </div>
+
+          <!-- Mandate (Approved text) -->
+          <div class="ecz-block">
+            <h4 class="ecz-block-title">Mandate</h4>
+            <p class="ecz-text mb-0">
+              The Electoral Commission of Zambia (ECZ) is established under Article 229 of the Constitution of Zambia
+              (Amendment) Act No. 2 of 2016. The Commission came into existence as an Electoral Management Body (EMB) in
+              1996.
+            </p>
+          </div>
+
+          <div class="ecz-block">
+            <p class="ecz-text mb-3">
+              In accordance with Article 229 (2) of the Constitution of Zambia, the Commission has the mandate to carry
+              out the following functions:
+            </p>
+
+            <ol class="ecz-ol">
+              <li>Implement the electoral process.</li>
+              <li>Conduct elections and referenda;</li>
+              <li>Carry out voter egisteration.</li>
+              <li>Settle minor electoral disputes, as prescribed by law.</li>
+              <li>Regulate the conduct of both&nbsp; voters and candidates.</li>
+              <li>Accredit observers and election agents, as prescribed by law.</li>
+              <li>Delimit electoral boundaries.</li>
+              <li>Perform such other functions as prescribed by law.</li>
+            </ol>
+          </div>
+
+          <div class="ecz-block mb-0">
+            <h4 class="ecz-block-title">Statutory Mandate</h4>
+            <p class="ecz-text mb-3">
+              The Electoral Process Act No. 35 of 2016 empowers the Commission with the following statutory functions:
+            </p>
+
+            <ol class="ecz-ol">
+              <li>Make regulations providing for the registration of voters and for the manner of conducting elections.</li>
+              <li>Constitute conflict management committees and appoint conflict management officers for&nbsp; purposes of resolving electoral disputes.</li>
+              <li>Aadminister and enforce the Electoral Process Act, and the Electoral Code of Conduct.</li>
+              <li>Correct mistakes committed by electoral officers in the tabulation of election results within seven days of the declaration of the results.</li>
+              <li>Disqualify a political party or candidate in breach of the Code.</li>
+              <li>Provide voter education.</li>
+            </ol>
+          </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</div>   
+      <!-- =========================
+      GROUP 2: COMPOSITION
+      ========================== -->
+      <div class="col-lg-6">
+        <div class="ecz-card ecz-card--composition h-100">
+          <div class="ecz-card-head">
+            <div class="ecz-badge ecz-badge--composition">
+              <i class="ri-group-line"></i>
+            </div>
+            <div>
+              <h3 class="ecz-card-title mb-1">Composition &amp; Secretariat</h3>
+              <p class="ecz-card-sub mb-0">Commission structure, decision-making, and management implementation.</p>
+            </div>
+          </div>
 
-  
+          <!-- Composition of the Commission (Approved text) -->
+          <div class="ecz-block">
+            <h4 class="ecz-block-title">Composition of the Commission</h4>
+            <p class="ecz-text">
+              The Commission, under the Electoral Commission of Zambia Act No. 25 of 2016, consists of the Chairperson,
+              the Vice-Chairperson and not more than three other members appointed by the President, subject to
+              ratification by the National Assembly.&nbsp; The Chairperson, and in his absence the Vice-Chairperson, has
+              the responsibility to chair and manage meetings and monitor the daily affairs of the Commission and
+              represents the Commission at various fora.
+            </p>
+            <p class="ecz-text mb-0">
+              The Chief Electoral Officer (CEO), who is the Chief Executive Officer of the Commission, participates in
+              Commission meetings representing Management but does not have the right to vote.
+            </p>
+          </div>
+
+          <div class="ecz-block">
+            <p class="ecz-text mb-0">
+              The policy related issues are discussed in the Commission meetings. Decisions are made based on the
+              majority of votes of the members present in the meetings.&nbsp; The Commission meetings are conducted once a
+              quorum is formed. Three members form a quorum.&nbsp; The Chairperson, the Vice-Chairperson and each member
+              of the Commission has the right of one equal vote.&nbsp; In the case of a tie the Chairperson has the
+              casting vote.
+            </p>
+          </div>
+
+          <!-- Secretariat/Management (Approved text) -->
+          <div class="ecz-block">
+            <h4 class="ecz-block-title">Secretariat/Management</h4>
+            <p class="ecz-text">
+              Section 9 of the Electoral Commission of Zambia Act No. 25 of 2016 provides for the appointment of the
+              Chief Electoral Officer who is the Chief Executive Officer of the Commission and is responsible for the
+              management and administration of the Commission, as well as implementation of the decisions of the
+              Commission.
+            </p>
+            <p class="ecz-text">
+              The Chief Electoral Officer is an ex-officio of the Commission.&nbsp; All policy decisions are made by the
+              Commission, while the Management is responsible for the implementation of all decisions of the Commission.
+            </p>
+            <p class="ecz-text mb-0">
+              The roles of the Commission and Management are distinct.&nbsp; The Commission sets the strategic direction,
+              monitors operational performance, compliance, management processes and policies while setting authority
+              levels.&nbsp; The Commission has three (3) Committees chaired by Members of the Commission, namely Finance;
+              Corporate Affairs and Administration; Elections and Voter Education Committee.&nbsp; There are also other
+              Committees created by Legislation that include the Audit Committee; Procurement Committee and Integrity
+              Committee.
+            </p>
+          </div>
+
+          <div class="ecz-block">
+            <p class="ecz-text mb-2">
+              The Commission has eight (8) departments that have specific responsibilities related to the electoral
+              affairs of the country.&nbsp; These are Electoral Operations, Information and Communication Technology,
+              Legal, Finance, Procurement, Human Resource and Administration, Corporate Affairs and Audit.
+            </p>
+
+            <div class="ecz-chips">
+              <span class="ecz-chip">Electoral Operations</span>
+              <span class="ecz-chip">Information and Communication Technology</span>
+              <span class="ecz-chip">Legal</span>
+              <span class="ecz-chip">Finance</span>
+              <span class="ecz-chip">Procurement</span>
+              <span class="ecz-chip">Human Resource and Administration</span>
+              <span class="ecz-chip">Corporate Affairs</span>
+              <span class="ecz-chip">Audit</span>
+            </div>
+          </div>
+
+        </div>
+
+    </div><!-- /row -->
+  </div><!-- /container -->
+</section>
       </main>
-
-    <footer>
+<br>
+     <footer>
          <!-- tp-footer area start -->
          <div class="tp-footer-area tp-blog-4-spacing tp-blog-4-spacing-2 bg-position pt-100 pb-40" data-background="assets/img/footer/footer.png">
             <div class="tp-footer-3-top pb-15">

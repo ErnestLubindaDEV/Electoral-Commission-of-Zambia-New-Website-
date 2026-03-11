@@ -224,9 +224,107 @@
     .tp-countdown-grid{ grid-template-columns: repeat(2, 1fr); }
     .tp-timebox-num{ font-size: 32px; }
   }
-  }
+  
+  /* Parent must be relative */
+.tp-submenu li.has-dropdown {
+    position: relative;
+}
 
+/* Make sure first-level dropdown items can anchor absolute children */
+.tp-submenu li.has-dropdown {
+  position: relative;
+}
 
+/* SECOND LEVEL dropdown (submenu inside submenu) */
+.tp-submenu li.has-dropdown > ul.tp-submenu {
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;     /* open to the right */
+  right: auto !important;    /* stop template forcing right:0 */
+  margin-left: 0 !important;
+  z-index: 9999;
+
+  /* hide by default */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(10px);
+  transition: all 0.2s ease;
+
+  display: block !important; /* keep block so animation works */
+  pointer-events: none;
+}
+
+/* Show second-level on hover */
+.tp-submenu li.has-dropdown:hover > ul.tp-submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  pointer-events: auto;
+}
+
+/* Arrow indicator on items that have a right submenu */
+.tp-submenu li.has-dropdown > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tp-submenu li.has-dropdown > a::after {
+  content: "›";
+  font-size: 14px;
+  margin-left: 10px;
+  line-height: 1;
+}
+
+/* Style second-level submenu like main dropdown */
+.tp-submenu li.has-dropdown > ul.tp-submenu {
+  background: #e5ebea; /* same as main dropdown */
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 10px 0;
+}
+
+/* Optional: match item spacing */
+.tp-submenu li.has-dropdown > ul.tp-submenu li a {
+  padding: 10px 20px;
+  display: block;
+  white-space: nowrap;
+}
+
+/* Hover state */
+.tp-submenu li.has-dropdown > ul.tp-submenu li a:hover {
+  background: #f5f5f5;
+}
+
+/* FAQ Illustration Styling */
+.faq-answer-wrap{
+    display:flex;
+    gap:20px;
+    align-items:flex-start;
+}
+
+.faq-illustration{
+    width:80px;
+    height:80px;
+    min-width:80px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:36px;
+    color:#fff;
+}
+
+.faq-green{ background:linear-gradient(135deg,#0d9153,#0aa35e); }
+.faq-orange{ background:linear-gradient(135deg,#f37221,#ff8a3d); }
+.faq-red{ background:linear-gradient(135deg,#ed1c24,#ff3a3a); }
+.faq-dark{ background:linear-gradient(135deg,#1f3130,#2d4746); }
+.faq-blue{ background:linear-gradient(135deg,#0057b8,#0073ff); }
+
+.tp-faq-details-para p{
+    margin-bottom:0;
+    line-height:1.7;
+}
 </style>
    </head>
 
@@ -505,24 +603,34 @@
                      <div class="tp-main-menu d-none d-xl-block">
                         <nav class="tp-mobile-menu-active">
                            <ul>
-<!-- 
+
                               <li>
                                  <a href="index.html">Home</a>
-                              </li> -->
+                              </li> 
 
                               <!-- ABOUT -->
-                              <li class="has-dropdown">
-                                 <a href="#">About ECZ</a>
-                                 <ul class="tp-submenu submenu">
-                              
-                                    <li><a href="team.html">Commission</a></li>
-                                    <li><a href="#">Establishment</a></li>
-                                                                        <li><a href="#">Functions</a></li>
-                                    <li><a href="#">National Elections Support Center</a></li>
-                                    <li><a href="#">Affiliations</a></li>
+                           <li class="has-dropdown">
+    <a href="#">About ECZ</a>
+    <ul class="tp-submenu submenu">
 
-                                 </ul>
-                              </li>
+        <li><a href="about.html">About ECZ</a></li>
+
+        <!-- Establishment with Submenu -->
+        <li class="has-dropdown">
+            <a href="#">Establishment</a>
+            <ul class="tp-submenu submenu">
+
+                <li><a href="Mandate&Composition.html">Mandate & Composition</a></li>
+                <li><a href="commission.html">Commission</a></li>
+                <li><a href="management.html">Management</a></li>
+                <li><a href="committees.html">Committees</a></li>
+            </ul>
+        </li>
+
+        <li><a href="#">Functions</a></li>
+        <li><a href="#">National Elections Support Center</a></li>
+    </ul>
+</li>
 
 
                               <!-- ELECTIONS -->
@@ -531,7 +639,6 @@
                                  <ul class="tp-submenu submenu">
                                     <li><a href="">Upcoming Elections</a></li>
                                     <li><a href="">Past Results</a></li>
-                                    <li><a href="">Election Calendar</a></li>
                                     <li><a href="">Political Parties</a></li>
                                  </ul>
                               </li>
@@ -549,18 +656,21 @@
 
                               <!-- MEDIA -->
                               <li class="has-dropdown">
-                                 <a href="#">Media & Resources</a>
+                                 <a href="#">News & Updates</a>
                                  <ul class="tp-submenu submenu">
-                                    <li><a href="">News & Updates</a></li>
+                                    <li><a href=""></a></li>
                                     <li><a href="">Press Releases</a></li>
                                     <li><a href="">Publications</a></li>
                                     <li><a href="">Downloads</a></li>
                                  </ul>
                               </li>
 
+                               <li class="has-dropdown">
+                                 <a href="#faq">FAQs</a>
+                              </li>
                               <!-- CONTACT -->
                               <li>
-                                 <a href="contact.html">Contact</a>
+                                 <a href="contact.html">Contact Us</a>
                               </li>
 
                            </ul>
@@ -570,18 +680,8 @@
                      <!-- HEADER ACTIONS -->
                      <div class="tp-header-contact d-flex align-items-center justify-content-end">
 
-                        <!-- SEARCH -->
-                        <div class="tp-header-search">
-                           <button class="tp-search-click tp-header-sidebar-btn border-full-1 rounded-circle lh-1">
-                              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                 <path d="M8.11118 15.2224C12.0386 15.2224 15.2224 12.0386 15.2224 8.11118C15.2224 4.18378 12.0386 1 8.11118 1C4.18378 1 1 4.18378 1 8.11118C1 12.0386 4.18378 15.2224 8.11118 15.2224Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                 <path d="M17.0005 17L13.1338 13.1333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              </svg>
-                           </button>
-                        </div>
-
                         <!-- CTA -->
-                        <div class="tp-header-2-btn ml-10 d-none d-md-inline-block">
+                        <!-- <div class="tp-header-2-btn ml-10 d-none d-md-inline-block">
                            <a style="background-color: #0d9153;"
                               href="register.html"
                               class="tp-btn-lg d-inline-block lh-0 tp-round-24 fs-16 ls-0 tp-btn-switch-animation tp-text-theme-primary fw-500">
@@ -592,7 +692,7 @@
                                  </span>
                               </span>
                            </a>
-                        </div>
+                        </div> -->
 
                         <!-- MOBILE MENU -->
                         <div class="tp-header-sidebar-menu ml-10">
@@ -627,8 +727,7 @@
                      <div class="col-lg-7 tp-hero-spacing">
                         <div class="tp-hero-content-wrapper">
                            <h2 class="tp-hero-title text fw-600 fs-70 fs-lg-50 fs-xs-34 ls-m-3 tp-text-common-white lh-1 mb-25">
-                              Strengthening democracy through
-                              <span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400">credible elections.</span>
+Delivering Credible Elections. Your Vote<span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400"><br>Counts.</span>
                            </h2>
 
                  <br><br>
@@ -636,7 +735,7 @@
                            <div class="tp-hero-btn text3">
                               <a href="register.html" class="tp-btn-xl d-inline-block lh-0 tp-round-24 fs-16 tp-bg-common-white ls-0 tp-btn-switch-animation tp-text-theme-primary fw-500">
                                  <span class="d-flex align-items-center justify-content-center">
-                                    <span class="btn-text"> Check Voter Registration </span>
+                                    <span class="btn-text"> Search for your polling station </span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                  </span> 
@@ -648,8 +747,7 @@
                      <div class="col-lg-5">
                         <div class="tp-hero-contact tp-round-4 mb-100 tp-slider-para-home">
                            <p class="tp-text-grey-3 mb-25">
-                              Get official information about voter registration, polling stations,
-                              election dates and electoral guidelines.
+                           Search for your nearest polling station. Enter your voter ID or location to find where you can cast your vote on election day.
                            </p>
                            <!-- <div class="tp-hero-contact-btn">
                               <a href="contact.html" class="fw-500 tp-text-common-white d-flex justify-content-between align-items-center">
@@ -674,8 +772,8 @@
                      <div class="col-lg-7 tp-hero-spacing">
                         <div class="tp-hero-content-wrapper">
                            <h2 class="tp-hero-title text fw-600 fs-70 fs-lg-50 fs-xs-34 ls-m-3 tp-text-common-white lh-1 mb-25">
-                              Empowering <br>citizens through
-                              <span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400"><br>voter education.</span>
+                           Facilitating The Voting Process For All
+                              <span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400"><br>Eligible Citizens.</span>
                            </h2>
 <br><br>
 
@@ -684,7 +782,7 @@
                            <div class="tp-hero-btn text3">
                               <a href="voter-education.html" class="tp-btn-xl d-inline-block lh-0 tp-round-24 fs-16 tp-bg-common-white ls-0 tp-btn-switch-animation tp-text-theme-primary fw-500">
                                  <span class="d-flex align-items-center justify-content-center">
-                                    <span class="btn-text"> Explore Voter Education </span>
+                                    <span class="btn-text"> Explore voter education </span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                  </span> 
@@ -722,8 +820,8 @@
                      <div class="col-lg-7 tp-hero-spacing">
                         <div class="tp-hero-content-wrapper">
                            <h2 style="color:#ffffff" class="tp-hero-title text fw-600 fs-70 fs-lg-50 fs-xs-34 ls-m-3 tp-text-common-white lh-1 mb-25">
-                              Transparent <br> processes for
-                              <span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400">trusted outcomes.</span>
+                              Transparent <br> Processes For
+                              <span class="tp-ff-heading text-italic tp-text-theme-secondary fw-400"><br>Trusted Outcomes.</span>
                            </h2>
 <br><br>
 
@@ -731,7 +829,7 @@
                            <div class="tp-hero-btn text3">
                               <a href="results.html" class="tp-btn-xl d-inline-block lh-0 tp-round-24 fs-16 tp-bg-common-white ls-0 tp-btn-switch-animation tp-text-theme-primary fw-500">
                                  <span class="d-flex align-items-center justify-content-center">
-                                    <span class="btn-text"> View Election Results </span>
+                                    <span class="btn-text"> View election results </span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                     <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
                                  </span> 
@@ -960,13 +1058,12 @@
         </div>
     </div>
 
-   <div class="tp-counter-area tp-bg-grey-4 pt-90 pb-75 p-relative z-index-1">
-            <hr>  
+<div class="tp-counter-area counter-bg tp-bg-grey-4 pt-90 pb-75 p-relative z-index-1">
+  <div class="container">
+    <div class="container-fluid ">
+        <div class="row " >
 
-    <div class="container-fluid">
-        <div class="row">
-
-                <h2 class="tp-section-title">ECZ's Statistics</h2>
+                <h2 style="color: #ffffff;" class="tp-section-title">ECZ's Statistics</h2>
 <br><br><br>
             <!-- Registered Voters -->
             <div class="col-xl-3 col-lg-6 col-md-6">
@@ -974,18 +1071,18 @@
                     <span class="mr-35">
                         <!-- People / Users Icon -->
                         <svg  width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="36" cy="24" r="12" stroke="#1F3130" stroke-width="2"/>
-                            <path d="M12 60C12 48 24 40 36 40C48 40 60 48 60 60"  stroke="#28a745" stroke-width="2"/>
+                            <circle cx="36" cy="24" r="12" stroke="#ffffff" stroke-width="2"/>
+                            <path d="M12 60C12 48 24 40 36 40C48 40 60 48 60 60"  stroke="#ffffff" stroke-width="2"/>
                         </svg>
                     </span>
                     <div>
-                        <h2  style="color:black;" class="fs-60 ls-m-3 mb-0">
+                        <h2  style="color:#ffffff;" class="fs-60 ls-m-3 mb-0">
 <span
     data-purecounter-duration="1"
     data-purecounter-end="7073513"
     data-purecounter-separator=","
     class="purecounter">0</span>                        </h2>
-                        <span class="fw-500 tp-text-grey-1 fs-16">Registered Voters</span>
+                        <span style="color: #ffffff;"  class="fw-500 tp-text-grey-1 fs-16">Registered Voters</span>
                     </div>
                 </div>
             </div>
@@ -996,15 +1093,15 @@
                     <span class="mr-35">
                         <!-- Map / Pin Icon -->
                         <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M36 2C23 2 12 13 12 26C12 40 36 70 36 70C36 70 60 40 60 26C60 13 49 2 36 2Z" stroke="#1F3130" stroke-width="2"/>
-                            <circle cx="36" cy="26" r="6" stroke="#28a745" stroke-width="2"/>
+                            <path d="M36 2C23 2 12 13 12 26C12 40 36 70 36 70C36 70 60 40 60 26C60 13 49 2 36 2Z" stroke="#ffffff" stroke-width="2"/>
+                            <circle cx="36" cy="26" r="6" stroke="#ffffff" stroke-width="2"/>
                         </svg>
                     </span>
                     <div>
-                        <h2  style="color:black;" class="fs-60 ls-m-3 mb-0">
+                        <h2 style="color: #ffffff;"  class="fs-60 ls-m-3 mb-0">
                             <span data-purecounter-duration="1" data-purecounter-end="156" class="purecounter">0</span>
                         </h2>
-                        <span class="fw-500 tp-text-grey-1 fs-16">Constituencies</span>
+                        <span style="color: #ffffff;"  class="fw-500 tp-text-grey-1 fs-16">Constituencies</span>
                     </div>
                 </div>
             </div>
@@ -1015,17 +1112,17 @@
                     <span class="mr-35">
                         <!-- Grid / Structure Icon -->
                         <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="8" y="8" width="20" height="20" stroke="#28a745" stroke-width="2"/>
-                            <rect x="44" y="8" width="20" height="20" stroke="#1F3130" stroke-width="2"/>
-                            <rect x="8" y="44" width="20" height="20" stroke="#1F3130" stroke-width="2"/>
-                            <rect x="44" y="44" width="20" height="20" stroke="#28a745" stroke-width="2"/>
+                            <rect x="8" y="8" width="20" height="20" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="44" y="8" width="20" height="20" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="8" y="44" width="20" height="20" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="44" y="44" width="20" height="20" stroke="#ffffff" stroke-width="2"/>
                         </svg>
                     </span>
                     <div>
-                        <h2  style="color:black;" class="fs-60 ls-m-3 mb-0">
+                        <h2  style="color: #ffffff;" class="fs-60 ls-m-3 mb-0">
                             <span data-purecounter-duration="1" data-purecounter-end="1858" data-purecounter-separator="," class="purecounter">0</span>
                         </h2>
-                        <span class="fw-500 tp-text-grey-1 fs-16">Wards</span>
+                        <span style="color: #ffffff;"  class="fw-500 tp-text-grey-1 fs-16">Wards</span>
                     </div>
                 </div>
             </div>
@@ -1036,15 +1133,15 @@
                     <span class="mr-35">
                         <!-- Check / Polling Icon -->
                         <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="36" cy="36" r="34" stroke="#1F3130" stroke-width="2"/>
-                            <path d="M24 36L32 44L48 28" stroke="#28a745" stroke-width="2"/>
+                            <circle cx="36" cy="36" r="34" stroke="#ffffff" stroke-width="2"/>
+                            <path d="M24 36L32 44L48 28" stroke="#ffffff" stroke-width="2"/>
                         </svg>
                     </span>
                     <div>
-                        <h2  style="color:black;" class="fs-60 ls-m-3 mb-0">
+                        <h2  style="color: #ffffff;"  class="fs-60 ls-m-3 mb-0">
                             <span data-purecounter-duration="1" data-purecounter-end="12200" data-purecounter-separator="," class="purecounter">0</span>
                         </h2>
-                        <span class="fw-500 tp-text-grey-1 fs-16">Polling Stations</span>
+                        <span style="color: #ffffff;"  class="fw-500 tp-text-grey-1 fs-16">Polling Stations</span>
                     </div>
                 </div>
             </div>
@@ -1053,117 +1150,140 @@
     </div>
 
 </div>
-          <hr>  
-
+</div>
        
-  <div class="tp-faq-area pt-140 pb-110">
-    <div class="container">
-        <div class="row">
+ <div id="faq" class="tp-faq-area pt-140 pb-110">
+<div class="container">
+<div class="row">
 
-            <!-- FAQ Image -->
-            <div class="col-lg-6">
-                <div class="tp-faq-4-thumb p-relative z-index-1 mb-30">
-                    <span class="tp-faq-4-thumb-shape p-absolute"></span>
-                    <div class="ml-30 thumb mr-85">
-                        <img class="w-100 tp-round-4" src="assets/img/faq/faq-4/thumb.jpg" alt="Commissions FAQ">
-                    </div>
-                </div>
-            </div>
-
-            <!-- FAQ Accordion -->
-          <div class="col-lg-6">
-    <div class="tp-faq-wrapper tp-faq-4-wrapper mb-30">
-        <h2 class="mb-20 fs-40 lh-1 fs-sm-36 wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.2s">
-            Prepare for <span class="text-italic fw-400 tp-ff-heading">Election Day.</span>
-        </h2>
-        <p class="mb-40">
-            Find essential information about voting procedures, polling stations, and how results are managed as we approach the general elections.
-        </p>
-
-        <div class="accordion" id="commission_faqaccordion">
-
-            <!-- Question 1 -->
-            <div class="accordion-item expand">
-                <h2 class="accordion-header" id="faq_one">
-                    <button style="color:black;" class="accordion-button faq-expend tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_one" aria-expanded="true">
-                        <span>01</span>
-                        What should I bring on Election Day?
-                    </button>
-                </h2>
-                <div id="faq__collapse_one" class="accordion-collapse collapse show">
-                    <div class="accordion-body tp-faq-details-para">
-                        <p>Please bring your NRC or valid voter identification. Voters are encouraged to arrive early and follow all instructions provided by polling officials.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Question 2 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq_two">
-                    <button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_two">
-                        <span>02</span>
-                        How do I find my assigned polling station?
-                    </button>
-                </h2>
-                <div id="faq__collapse_two" class="accordion-collapse collapse">
-                    <div class="accordion-body tp-faq-details-para">
-                        <p>Your polling station can be confirmed via the official ECZ website, SMS services, or district offices. Voters must vote at their designated stations.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Question 3 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq_three">
-                    <button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_three">
-                        <span>03</span>
-                        How does the voting process work?
-                    </button>
-                </h2>
-                <div id="faq__collapse_three" class="accordion-collapse collapse">
-                    <div class="accordion-body tp-faq-details-para">
-                        <p>After verification, voters receive ballot papers, vote in private, and deposit ballots into sealed boxes under the supervision of election officials and observers.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Question 4 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq_four">
-                    <button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_four">
-                        <span>04</span>
-                        How are results counted and announced?
-                    </button>
-                </h2>
-                <div id="faq__collapse_four" class="accordion-collapse collapse">
-                    <div class="accordion-body tp-faq-details-para">
-                        <p>Votes are counted at polling stations, verified at constituency level, and officially announced by the Commission following established legal procedures.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Question 5 -->
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="faq_five">
-                    <button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_five">
-                        <span>05</span>
-                        What is the role of the Electoral Commission during elections?
-                    </button>
-                </h2>
-                <div id="faq__collapse_five" class="accordion-collapse collapse">
-                    <div class="accordion-body tp-faq-details-para">
-                        <p>The Commission manages polling operations, deploys election materials, accredits observers, ensures transparency, and declares official results.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
+<!-- FAQ Image -->
+<div class="col-lg-6">
+<div class="tp-faq-4-thumb p-relative z-index-1 mb-30">
+<span class="tp-faq-4-thumb-shape p-absolute"></span>
+<div class="ml-30 thumb mr-85">
+<img class="w-100 tp-round-4" src="assets/img/faq/faq-4/thumb.jpg" alt="Commissions FAQ">
+</div>
+</div>
 </div>
 
+<!-- FAQ Accordion -->
+<div class="col-lg-6">
+<div class="tp-faq-wrapper tp-faq-4-wrapper mb-30">
+<h2 class="mb-20 fs-40 lh-1 fs-sm-36">
+Prepare for <span class="text-italic fw-400 tp-ff-heading">Election Day.</span>
+</h2>
+<p class="mb-40">
+Find essential information about voting procedures, polling stations, and how results are managed as we approach the general elections.
+</p>
 
-        </div>
-    </div>
+<div class="accordion" id="commission_faqaccordion">
+
+<!-- Question 1 -->
+<div class="accordion-item expand">
+<h2 class="accordion-header" id="faq_one">
+<button style="color:black;" class="accordion-button faq-expend tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_one" aria-expanded="true">
+<span>01</span>
+What should I bring on Election Day?
+</button>
+</h2>
+<div id="faq__collapse_one" class="accordion-collapse collapse show">
+<div class="accordion-body tp-faq-details-para">
+<div class="faq-answer-wrap">
+<div class="faq-illustration faq-green">
+<i class="ri-id-card-line"></i>
+</div>
+<p>Please bring your Voter's Card. Voters are encouraged to arrive early and follow all instructions provided by polling officials.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Question 2 -->
+<div class="accordion-item">
+<h2 class="accordion-header" id="faq_two">
+<button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_two">
+<span>02</span>
+How do I find my assigned polling station?
+</button>
+</h2>
+<div id="faq__collapse_two" class="accordion-collapse collapse">
+<div class="accordion-body tp-faq-details-para">
+<div class="faq-answer-wrap">
+<div class="faq-illustration faq-orange">
+<i class="ri-map-pin-line"></i>
+</div>
+<p>Your polling station can be confirmed via the official ECZ website, SMS services, or district offices. Voters must vote at their designated stations.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Question 3 -->
+<div class="accordion-item">
+<h2 class="accordion-header" id="faq_three">
+<button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_three">
+<span>03</span>
+How does the voting process work?
+</button>
+</h2>
+<div id="faq__collapse_three" class="accordion-collapse collapse">
+<div class="accordion-body tp-faq-details-para">
+<div class="faq-answer-wrap">
+<div class="faq-illustration faq-blue">
+<i class="ri-checkbox-circle-line"></i>
+</div>
+<p>After verification, voters receive ballot papers, vote in private, and deposit ballots into sealed boxes under the supervision of election officials and observers.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Question 4 -->
+<div class="accordion-item">
+<h2 class="accordion-header" id="faq_four">
+<button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_four">
+<span>04</span>
+How are results counted and announced?
+</button>
+</h2>
+<div id="faq__collapse_four" class="accordion-collapse collapse">
+<div class="accordion-body tp-faq-details-para">
+<div class="faq-answer-wrap">
+<div class="faq-illustration faq-red">
+<i class="ri-bar-chart-line"></i>
+</div>
+<p>Votes are counted at polling stations, verified at constituency level, and officially announced by the Commission following established legal procedures.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Question 5 -->
+<div class="accordion-item">
+<h2 class="accordion-header" id="faq_five">
+<button style="color:black;" class="accordion-button faq-expend collapsed tp-faq-btn-2" type="button" data-bs-toggle="collapse" data-bs-target="#faq__collapse_five">
+<span>05</span>
+What is the role of the Electoral Commission during elections?
+</button>
+</h2>
+<div id="faq__collapse_five" class="accordion-collapse collapse">
+<div class="accordion-body tp-faq-details-para">
+<div class="faq-answer-wrap">
+<div class="faq-illustration faq-dark">
+<i class="ri-government-line"></i>
+</div>
+<p>The Commission manages polling operations, deploys election materials, accredits observers, ensures transparency, and declares official results.</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
 </div>
 
 
@@ -1410,7 +1530,7 @@
                               <span class="tp-icon d-inline-block tp-bg-common-white tp-round-24 mr-15">
                                  <svg style="background-color: ##49af6d;" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.5474 24C11.9861 24 13.225 23.131 13.7686 21.8906H7.32617C7.86978 23.131 9.10873 24 10.5474 24Z" fill="#0d9153" />
-                                    <path d="M17.8126 11.6185V10.0781C17.8126 6.80522 15.637 4.0312 12.6563 3.12516V2.10938C12.6563 0.946266 11.71 0 10.5469 0C9.38382 0 8.43755 0.946266 8.43755 2.10938V3.12516C5.45677 4.0312 3.2813 6.80517 3.2813 10.0781V11.6185C3.2813 14.4935 2.18546 17.2195 0.195664 19.2946C0.00066416 19.4979 -0.0541328 19.798 0.0563985 20.0571C0.16693 20.3162 0.421461 20.4844 0.70318 20.4844H20.3907C20.6724 20.4844 20.9269 20.3162 21.0374 20.0571C21.1479 19.798 21.0931 19.4979 20.8982 19.2946C18.9084 17.2195 17.8126 14.4934 17.8126 11.6185ZM11.2501 2.84663C11.0186 2.82431 10.7841 2.8125 10.5469 2.8125C10.3097 2.8125 10.0752 2.82431 9.8438 2.84663V2.10938C9.8438 1.72167 10.1592 1.40625 10.5469 1.40625C10.9346 1.40625 11.2501 1.72167 11.2501 2.10938V2.84663Z" fill="#1F3130" />
+                                    <path d="M17.8126 11.6185V10.0781C17.8126 6.80522 15.637 4.0312 12.6563 3.12516V2.10938C12.6563 0.946266 11.71 0 10.5469 0C9.38382 0 8.43755 0.946266 8.43755 2.10938V3.12516C5.45677 4.0312 3.2813 6.80517 3.2813 10.0781V11.6185C3.2813 14.4935 2.18546 17.2195 0.195664 19.2946C0.00066416 19.4979 -0.0541328 19.798 0.0563985 20.0571C0.16693 20.3162 0.421461 20.4844 0.70318 20.4844H20.3907C20.6724 20.4844 20.9269 20.3162 21.0374 20.0571C21.1479 19.798 21.0931 19.4979 20.8982 19.2946C18.9084 17.2195 17.8126 14.4934 17.8126 11.6185ZM11.2501 2.84663C11.0186 2.82431 10.7841 2.8125 10.5469 2.8125C10.3097 2.8125 10.0752 2.82431 9.8438 2.84663V2.10938C9.8438 1.72167 10.1592 1.40625 10.5469 1.40625C10.9346 1.40625 11.2501 1.72167 11.2501 2.10938V2.84663Z" fill="#ffffff" />
                                  </svg>
                               </span>   
                               <div class="tp-footer-3-title">
